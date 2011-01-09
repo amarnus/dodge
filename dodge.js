@@ -1,11 +1,11 @@
-dodge = {};
+var dodge = {};
 
 dodge.boot = function() {
   dodge.context  = $('#playground')[0].getContext('2d');
   dodge.width    = $('#playground').width();
   dodge.height   = $('#playground').height();
   dodge.gameOver = true;
-  dodge.notify('Press S to start the game', 50, 130);
+  dodge.notify('Press S to start', 85, 135);
   dodge.drawHero().drawEnemies();
   $(document).keydown(dodge.keyDown).keyup(dodge.keyUp);
 }
@@ -107,7 +107,7 @@ dodge.paint = function() {
   
   if (dodge.move > (dodge.height - 96) ) {
 	if (!(dodge.block in dodge.arrangement)) {
-	  dodge.notify('Press S to restart the game', 155, 130);
+	  dodge.notify('Press S to restart', 150, 135);
 	  clearInterval(dodge.intervalID);
 	  dodge.gameOver = true;
 	  return;
@@ -128,7 +128,11 @@ dodge.paint = function() {
 }
 
 dodge.setScore = function(score) {
-  $('.scoreBoard').html('<div class="subtext">Dodges</div>' + score).hide().fadeIn();
+  $('.scoreBoard').html('<div class="subtext">Dodges</div>' + score).hide().fadeIn(); 
+  if (chrome !== undefined && chrome.browserAction !== undefined) {
+	  chrome.browserAction.setBadgeBackgroundColor({color:[200, 0, 0, 0]});
+	  chrome.browserAction.setBadgeText({text: String(score) });
+  }
   return this;
 }
 
@@ -144,8 +148,7 @@ dodge.setArrangements = function() {
   do {
   	temp = Math.floor(Math.random()*4);
   } while(temp == found);
-  dodge.arrangement[found] = 0;
-  dodge.arrangement[temp] = 0;
+  dodge.arrangement[found] = dodge.arrangement[temp] = 0;
 }
 
 dodge.notify = function(text, x, y) {
