@@ -1,9 +1,8 @@
-Dodge
+<strong>Dodge</strong>
 
-Dodge the blocks coming at you for as long as you can as they get progressively faster with each level. If you think the game is too slow, well, you are given an accelerator too!
+Dodge is a simple, browser game that makes use of some features of the wonderful HTML5 spec including the canvas element.
 
-No, there was no Flash involved in the making of this game. Surprised? Thank HTML5. 
+Google Chrome browser extension <a href="https://chrome.google.com/extensions/detail/bojbpjmilbkcgcappffpppppdbaiegii">https://chrome.google.com/extensions/detail/bojbpjmilbkcgcappffpppppdbaiegii</a>
 
-In case of bugs/feature requests/possible optimizations, please write to amarnus@gmail.com. Enjoy the game!
-
-If you didn't know already, this game is also a Google Chrome browser extension. Let me know what you think of it in the comments section at https://chrome.google.com/extensions/detail/bojbpjmilbkcgcappffpppppdbaiegii
+Website
+<a href="http://blog.amarnus.me">http://blog.amarnus.me</a>
