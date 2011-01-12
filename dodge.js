@@ -6,7 +6,6 @@ dodge.boot = function() {
   dodge.height   = $('#playground').height();
   dodge.gameOver = true;
   dodge.notify('Press S to start', 85, 135);
-  dodge.drawHero().drawEnemies();
   $(document).keydown(dodge.keyDown).keyup(dodge.keyUp);
 }
 
@@ -23,6 +22,7 @@ dodge.init = function() {
   dodge.speedUpBy = 0.2;
   dodge.setArrangements();
   dodge.play = true;
+  dodge.drawHero().drawEnemies();
   $('#playground').css('opacity', 1).unbind('click');
   dodge.intervalID = setInterval(dodge.paint, 8);
 }
@@ -69,9 +69,9 @@ dodge.keyDown = function(e) {
 dodge.drawFigure = function(x, y, width, height, color) {
   dodge.context.beginPath();
   dodge.context.rect(x, y, width, height);
-  dodge.context.closePath();
   dodge.context.fillStyle = color;
   dodge.context.fill();	 
+  dodge.context.closePath();
 }
 
 dodge.drawHero = function() {
@@ -129,7 +129,7 @@ dodge.paint = function() {
 
 dodge.setScore = function(score) {
   $('.scoreBoard').html('<div class="subtext">Dodges</div>' + score).hide().fadeIn(); 
-  if (chrome !== undefined && chrome.browserAction !== undefined) {
+  if ('chrome' in window && chrome !== undefined && chrome.browserAction !== undefined) {
 	  chrome.browserAction.setBadgeBackgroundColor({color:[200, 0, 0, 0]});
 	  chrome.browserAction.setBadgeText({text: String(score) });
   }
