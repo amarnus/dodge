@@ -54,15 +54,15 @@ dodge.keyDown = function(e) {
 	  break;
 	case 80:
 	  if (dodge.play) 
-		clearInterval(dodge.intervalID);
+			clearInterval(dodge.intervalID);
 	  else if (!dodge.gameOver)
-		dodge.intervalID = setInterval(dodge.paint, 8);
+			dodge.intervalID = setInterval(dodge.paint, 8);
 		dodge.play = !dodge.play;
 		break;
 	case 83:
-	   if (dodge.gameOver)
-		 dodge.init();
-	   break;
+	  if (dodge.gameOver)
+			dodge.init();
+	  break;
   }
 }
 
@@ -87,49 +87,44 @@ dodge.drawEnemies = function() {
 }
 
 dodge.paint = function() {  
-  dodge.gameOver = false;
-  
+  dodge.gameOver = false; 
   if (dodge.goRight == true && (dodge.width - dodge.position > (Number(1/dodge.enemyCount)*dodge.width) - dodge.gap)) {
-	dodge.position += (Number(1/dodge.enemyCount)*dodge.width);	
-	dodge.block++;
-	dodge.goRight = false;			
-  }
-  
+		dodge.position += (Number(1/dodge.enemyCount)*dodge.width);	
+		dodge.block++;
+		dodge.goRight = false;			
+  } 
   if (dodge.goLeft == true && dodge.position != dodge.gap) {
-	dodge.position -= (Number(1/dodge.enemyCount)*dodge.width);
-	dodge.block--;
-	dodge.goLeft = false;
-  }
-  
+		dodge.position -= (Number(1/dodge.enemyCount)*dodge.width);
+		dodge.block--;
+		dodge.goLeft = false;
+  } 
   dodge.move += (dodge.speedUp == true) ? 4 * dodge.speed : dodge.speed;
   dodge.context.clearRect(0, 0, dodge.width, dodge.height); 
-  dodge.drawHero().drawEnemies();
-  
+  dodge.drawHero().drawEnemies();  
   if (dodge.move > (dodge.height - 96) ) {
-	if (!(dodge.block in dodge.arrangement)) {
-	  dodge.notify('Press S to restart', 150, 135);
-	  clearInterval(dodge.intervalID);
-	  dodge.gameOver = true;
-	  return;
-	}
+		if (!(dodge.block in dodge.arrangement)) {
+		  dodge.notify('Press S to restart', 150, 135);
+		  clearInterval(dodge.intervalID);
+		  dodge.gameOver = true;
+		  return;
+		}
   } 
-  
   if (dodge.move > dodge.height) {
-	dodge.move = 0;
-	dodge.score++;
-	if (dodge.score%5 == 0) {
-	  dodge.level++;
-	  dodge.speed += dodge.speedUpBy;
-	  dodge.setLevel(dodge.level);
-	}
-	dodge.setScore(dodge.score);
-	dodge.setArrangements()
+		dodge.move = 0;
+		dodge.score++;
+		if (dodge.score%5 == 0) {
+		  dodge.level++;
+		  dodge.speed += dodge.speedUpBy;
+		  dodge.setLevel(dodge.level);
+		}
+		dodge.setScore(dodge.score);
+		dodge.setArrangements()
   }
 }
 
 dodge.setScore = function(score) {
   $('.scoreBoard').html('<div class="subtext">Dodges</div>' + score).hide().fadeIn(); 
-  if ('chrome' in window && chrome !== undefined && chrome.browserAction !== undefined) {
+  if ('chrome' in window && chrome.browserAction !== undefined) { 
 	  chrome.browserAction.setBadgeBackgroundColor({color:[200, 0, 0, 0]});
 	  chrome.browserAction.setBadgeText({text: String(score) });
   }
