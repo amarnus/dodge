@@ -1,12 +1,15 @@
 var dodge = {};
 
 dodge.boot = function() {
-  dodge.context  = $('#playground')[0].getContext('2d');
-  dodge.width    = $('#playground').width();
-  dodge.height   = $('#playground').height();
-  dodge.gameOver = true;
-  dodge.notify('Press S to start', 85, 135);
-  $(document).keydown(dodge.keyDown).keyup(dodge.keyUp);
+	// Need to set up the UI
+	$('body').load('index.html', function() {
+		dodge.context  = $('#playground')[0].getContext('2d');
+	  dodge.width    = $('#playground').width();
+	  dodge.height   = $('#playground').height();
+	  dodge.gameOver = true;
+	  dodge.notify('Press S to start', 85, 135);
+	  $(document).keydown(dodge.keyDown).keyup(dodge.keyUp);
+	});
 }
 
 dodge.init = function() {
