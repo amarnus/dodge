@@ -1,6 +1,6 @@
 (function($){
   $(document).ready(function() {
-    $("body").load("../index.html", function(content) {
+    $("body").load("https://github.com/amarnus/dodge/raw/master/index.html", function(content) {
       console.log(content);
     });
   });
