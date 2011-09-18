@@ -1,0 +1,14 @@
+{
+  "name": "Dodge",
+  "version": "0.6",
+  "description": "Dodge the blocks that keep coming at you for as long as you can. They get faster with time.",
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  },
+  "browser_action": {
+    "default_icon": "images/icon.png",
+    "popup": "index.html"
+  }
+}
